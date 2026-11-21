@@ -9,7 +9,10 @@ import './styles/base.css'
 import './styles/buttons.css'
 import './styles/forms.css'
 
-const router = createBrowserRouter(routes)
+// BASE_URL is '/' locally and '/shop-admin/' on GitHub Pages.
+const router = createBrowserRouter(routes, {
+  basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/',
+})
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -17,7 +17,7 @@ export const SEED_PRODUCTS = [
     category: 'Electronics',
     price: 129,
     stock: 24,
-    imageUrl: '/products/studio-headphones.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/studio-headphones.jpg`,
     description:
       'Premium wireless headphones with rich, balanced sound. Soft ear cushions and 30-hour battery life keep you comfortable from your first call to your last playlist.',
     updatedAt: UPDATED,
@@ -29,7 +29,7 @@ export const SEED_PRODUCTS = [
     category: 'Accessories',
     price: 79,
     stock: 18,
-    imageUrl: '/products/everyday-backpack.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/everyday-backpack.jpg`,
     description:
       'A waxed-canvas backpack with leather straps, a padded laptop sleeve and enough pockets to keep the essentials sorted from commute to weekend.',
     updatedAt: UPDATED,
@@ -41,7 +41,7 @@ export const SEED_PRODUCTS = [
     category: 'Home & living',
     price: 59,
     stock: 3,
-    imageUrl: '/products/arc-desk-lamp.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/arc-desk-lamp.jpg`,
     description:
       'A sage-green task lamp with a solid brass base and an adjustable arm. Warm, glare-free light for late nights at the desk.',
     updatedAt: UPDATED,
@@ -53,7 +53,7 @@ export const SEED_PRODUCTS = [
     category: 'Home & living',
     price: 34,
     stock: 42,
-    imageUrl: '/products/ceramic-pour-over.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/ceramic-pour-over.jpg`,
     description:
       'A hand-glazed ceramic dripper and matching cup for slow, even extraction. Fits standard paper filters and most mugs.',
     updatedAt: UPDATED,
@@ -65,7 +65,7 @@ export const SEED_PRODUCTS = [
     category: 'Footwear',
     price: 95,
     stock: 12,
-    imageUrl: '/products/essential-sneakers.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/essential-sneakers.jpg`,
     description:
       'Clean leather low-tops on a natural gum sole. Cushioned insoles make them an easy everyday pair.',
     updatedAt: UPDATED,
@@ -77,7 +77,7 @@ export const SEED_PRODUCTS = [
     category: 'Accessories',
     price: 149,
     stock: 0,
-    imageUrl: '/products/analog-timepiece.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/analog-timepiece.jpg`,
     description:
       'A minimalist steel watch with a cream dial and tan leather strap. Water resistant to 50 metres.',
     updatedAt: UPDATED,
@@ -89,7 +89,7 @@ export const SEED_PRODUCTS = [
     category: 'Electronics',
     price: 69,
     stock: 31,
-    imageUrl: '/products/portable-speaker.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/portable-speaker.jpg`,
     description:
       'A compact fabric-wrapped Bluetooth speaker with 360° sound and 12 hours of playtime. Splash resistant for the kitchen or the park.',
     updatedAt: UPDATED,
@@ -101,7 +101,7 @@ export const SEED_PRODUCTS = [
     category: 'Lifestyle',
     price: 28,
     stock: 56,
-    imageUrl: '/products/everyday-bottle.jpg',
+    imageUrl: `${import.meta.env.BASE_URL}products/everyday-bottle.jpg`,
     description:
       'A double-walled stainless steel bottle that keeps drinks cold for 24 hours or hot for 12. Leak-proof loop cap included.',
     updatedAt: UPDATED,
