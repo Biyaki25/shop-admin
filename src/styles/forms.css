@@ -1,0 +1,144 @@
+/*
+ * Form controls: labels, inputs, textareas, selects and their error states.
+ * Measurements match the Add / Edit product mock-ups (50px tall inputs,
+ * 13px semibold labels, red border + message for invalid fields).
+ */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Amber dot after the label of a field that has unsaved edits */
+.field__changed-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: var(--color-warning);
+  vertical-align: 1px;
+}
+
+/* The "*" after required labels */
+.field__required {
+  margin-left: 2px;
+}
+
+.field__hint {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.field__error {
+  font-size: var(--text-sm);
+  color: var(--color-danger-strong);
+}
+
+.input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input:hover:not(:disabled):not([readonly]) {
+  border-color: var(--color-border-strong);
+}
+
+/* .is-focus mirrors :focus so the field-states sheet can show it statically. */
+.input:focus,
+.input.is-focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+/* Read-only and disabled fields get the grey fill seen on the SKU field
+   and on the "added successfully" screen. Read-only text stays readable
+   (it can be selected and copied); disabled text is muted and the cursor
+   says "not allowed", so the two states are distinguishable. */
+.input[readonly],
+.input:disabled {
+  background: var(--color-surface-muted);
+  color: var(--color-text-secondary);
+  cursor: default;
+}
+
+.input:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--color-danger-strong);
+}
+
+.input[aria-invalid='true']:focus {
+  box-shadow: 0 0 0 3px var(--color-danger-bg);
+}
+
+textarea.input {
+  min-height: 104px;
+  resize: vertical;
+}
+
+/* Native <select> with a custom chevron */
+select.input {
+  appearance: none;
+  padding-right: 44px;
+  background-image: var(--select-chevron);
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+select.input:disabled {
+  cursor: not-allowed;
+}
+
+/* Hide the number spinners so price/stock look like the mock-up's plain fields. */
+input.input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input.input[type='number']::-webkit-inner-spin-button,
+input.input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Price + Stock sit side by side from tablet width up. */
+.field-row {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 480px) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}

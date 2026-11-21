@@ -1,0 +1,23 @@
+.stock-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.stock-badge--in {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.stock-badge--low {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.stock-badge--out {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}

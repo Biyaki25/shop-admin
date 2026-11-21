@@ -1,0 +1,46 @@
+/* Component-set grid: 1 column on phones, 2 on tablets, 3 on desktop. */
+.field-states {
+  display: grid;
+  gap: 16px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .field-states {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .field-states {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Each variant sits in a card with a dashed outline, like a Figma component set. */
+.field-states__item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  border: 1px dashed var(--color-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.field-states__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.field-states__note {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.field-states__heading {
+  margin-top: 16px;
+}

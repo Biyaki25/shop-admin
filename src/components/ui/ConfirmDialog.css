@@ -1,0 +1,46 @@
+.dialog {
+  width: min(100% - 32px, 500px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Slate overlay from the mock-up */
+.dialog::backdrop {
+  background: var(--color-backdrop);
+}
+
+.dialog__panel {
+  padding: 24px;
+}
+
+.dialog__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.dialog__body {
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.dialog__actions .btn {
+  min-width: 128px;
+}
+
+@media (max-width: 479px) {
+  .dialog__actions .btn {
+    flex: 1 1 100%;
+  }
+}

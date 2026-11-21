@@ -1,0 +1,71 @@
+.status-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  padding: 48px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .status-card {
+    min-height: 420px;
+  }
+}
+
+/* Used for "No products found" inside the products grid area */
+.status-card--compact {
+  min-height: 260px;
+}
+
+.status-card__icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.status-card__icon--brand {
+  background: var(--color-primary-50);
+  color: var(--color-primary-text);
+}
+
+.status-card__icon--danger {
+  background: var(--color-danger-bg);
+  color: var(--color-danger-strong);
+}
+
+/* The indigo "404" pill */
+.status-card__badge {
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  background: var(--color-primary-50);
+  color: var(--color-primary-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.status-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.status-card__text {
+  max-width: 420px;
+  margin-top: 10px;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.status-card__action {
+  margin-top: 16px;
+}

@@ -1,0 +1,46 @@
+/* Title block with the "+ Add Product" button on the right (wraps on phones). */
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px 24px;
+}
+
+.page-head__title {
+  margin-top: 16px;
+}
+
+.page-head__action {
+  align-self: center;
+}
+
+@media (max-width: 479px) {
+  .page-head__action {
+    width: 100%;
+  }
+}
+
+.products__section {
+  margin-top: 32px;
+}
+
+/* "Studio headphones deleted · Undo" sits right-aligned above the stats. */
+.products__toast {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+
+.products__count {
+  margin: 20px 0 16px;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.products__footnote {
+  margin-top: 40px;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}

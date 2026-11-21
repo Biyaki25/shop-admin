@@ -1,0 +1,93 @@
+.toast {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius);
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  box-shadow: var(--shadow-sm);
+}
+
+.toast__body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 12px 10px 16px;
+  font-size: 0.9375rem;
+}
+
+.toast__icon {
+  flex: none;
+}
+
+.toast__text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Inline "Undo" text button that sits right after the message */
+.toast__action {
+  flex: none;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-primary-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.toast__action:hover {
+  background: var(--color-surface);
+}
+
+.toast__action:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* 3px countdown bar: full width at the start, shrinks to nothing. */
+.toast__progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.55;
+  transform-origin: left center;
+  animation-name: toast-countdown;
+  animation-duration: var(--toast-duration, 5s);
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+/* Pause the countdown while the pointer or keyboard focus is on the toast. */
+.toast:hover .toast__progress,
+.toast:focus-within .toast__progress {
+  animation-play-state: paused;
+}
+
+@keyframes toast-countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/*
+ * The global reduced-motion rule shortens every animation to ~0ms, which
+ * would make the toast vanish instantly. The countdown is a timer, not
+ * decoration, so it keeps its real length here.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .toast__progress {
+    animation-duration: var(--toast-duration, 5s) !important;
+  }
+}

@@ -1,0 +1,26 @@
+/* Header, then a main area that grows, so the footer stays at the bottom. */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-shell__main {
+  flex: 1;
+}
+
+.app-shell__main:focus {
+  outline: none;
+}
+
+/* Back link sits 48px under the header with a gap before the title. */
+.back-link {
+  margin-bottom: 32px;
+  margin-left: -2px;
+}
+
+@media (min-width: 768px) {
+  .back-link {
+    margin-bottom: 48px;
+  }
+}

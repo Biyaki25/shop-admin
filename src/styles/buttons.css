@@ -1,0 +1,134 @@
+/*
+ * Buttons
+ * The mock-up's component sheet shows four states per button:
+ * default, hover (darker), keyboard focus (ring) and disabled (grey).
+ * Usage: <button class="btn btn--primary">, works on <a> links too.
+ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  background: var(--color-border);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+/* Solid indigo: main call to action */
+.btn--primary {
+  background: var(--color-primary-fill);
+  color: var(--color-on-primary);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-primary-fill-hover);
+}
+
+.btn--primary:active:not(:disabled) {
+  background: var(--color-primary-active);
+}
+
+/* Saving state: keep the primary colour while the spinner shows. */
+.btn--primary.is-busy:disabled {
+  background: var(--color-primary-fill);
+  border-color: var(--color-primary-fill);
+  color: var(--color-on-primary);
+  cursor: progress;
+}
+
+/* White with a grey border: "Cancel", "Add another product" */
+.btn--secondary {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--color-surface-muted);
+}
+
+/* Solid red: "Delete product" on the details page */
+.btn--danger {
+  background: var(--color-danger-fill);
+  color: var(--color-on-primary);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+/* Red outline: the confirm button inside the delete dialog */
+.btn--danger-outline {
+  background: var(--color-surface);
+  border-color: var(--color-danger-strong);
+  color: var(--color-danger-strong);
+}
+
+.btn--danger-outline:hover:not(:disabled) {
+  background: var(--color-danger-bg);
+}
+
+/* Smaller variant: dialog buttons, Undo, Clear search */
+.btn--sm {
+  min-height: 36px;
+  padding: 0 16px;
+  font-size: 0.875rem;
+}
+
+/* Text-only link styled button: "Back to products", "Clear all" */
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 2px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-primary-text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Stretch buttons to full width on phones so they're easy to tap. */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 479px) {
+  .btn-row > .btn {
+    flex: 1 1 100%;
+  }
+}

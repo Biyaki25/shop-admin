@@ -1,0 +1,49 @@
+.site-footer {
+  padding-block: 24px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+/* Landing page footer is plain white with more breathing room. */
+.site-footer--landing {
+  padding-block: 28px 32px;
+  background: var(--color-surface);
+}
+
+.site-footer__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* On inner pages the copyright sits in a white rounded bar. */
+.site-footer__bar {
+  padding: 12px 0;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.site-footer--landing .site-footer__bar {
+  padding: 0;
+}
+
+.site-footer__row--tagline {
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+}
+
+.site-footer__lead {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+@media (min-width: 640px) {
+  .site-footer__row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
