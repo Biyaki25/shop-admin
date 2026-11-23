@@ -1,9 +1,10 @@
 /* White card that holds the form (Add & Edit pages). */
 .form-card {
   padding: 24px 16px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
   background: var(--color-surface);
+  box-shadow: var(--shadow-card);
 }
 
 @media (min-width: 640px) {
@@ -97,7 +98,7 @@
 /* ---- Tips panel ("Make every product shine.") ---- */
 .tips {
   padding: 24px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   background: var(--color-primary-50);
 }
 

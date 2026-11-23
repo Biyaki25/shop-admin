@@ -1,0 +1,133 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--header-height);
+  padding: 12px var(--gutter);
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.topbar__menu-button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -8px;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--color-text);
+}
+
+.topbar__menu-button:hover {
+  background: var(--color-surface-muted);
+}
+
+.topbar__menu-button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.topbar__greeting {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar__hello {
+  overflow: hidden;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar__hello strong {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Phones: just the name, so it doesn't get cut off. */
+.topbar__time {
+  display: none;
+}
+
+.topbar__sub {
+  display: none;
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar__avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-fill);
+  color: var(--color-on-primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .topbar__hello {
+    font-size: 1.375rem;
+  }
+
+  .topbar__sub,
+  .topbar__time {
+    display: inline;
+  }
+
+  .topbar__sub {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .topbar {
+    min-height: 88px;
+  }
+
+  .topbar__menu-button {
+    display: none;
+  }
+}
+
+/* Sun/moon toggle: same 40px hit area in both states. */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--color-primary-50);
+  color: var(--color-primary-text);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}

@@ -1,7 +1,19 @@
-/* Header, then a main area that grows, so the footer stays at the bottom. */
+/*
+ * Dashboard shell: fixed sidebar on the left (from 1024px), and a content
+ * column with the top bar, the page and the footer.
+ * Inside the dashboard the page gutters are tighter than the old full-width
+ * site, since the sidebar already takes the left edge.
+ */
 .app-shell {
+  --gutter: 16px;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.app-shell__content {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   min-height: 100vh;
 }
 
@@ -13,14 +25,46 @@
   outline: none;
 }
 
-/* Back link sits 48px under the header with a gap before the title. */
-.back-link {
-  margin-bottom: 32px;
-  margin-left: -2px;
+@media (min-width: 640px) {
+  .app-shell {
+    --gutter: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-shell {
+    --gutter: 32px;
+  }
+
+  .app-shell__content {
+    margin-left: var(--sidebar-width);
+  }
+}
+
+/* Pages sit closer to the top bar than they did under the old header. */
+.app-shell .page {
+  padding-block: 24px 48px;
 }
 
 @media (min-width: 768px) {
-  .back-link {
-    margin-bottom: 48px;
+  .app-shell .page {
+    padding-block: 32px 56px;
+  }
+}
+
+/* Back link sits under the top bar with a gap before the title. */
+.back-link {
+  margin-bottom: 24px;
+  margin-left: -2px;
+}
+
+/* Home page inside the dashboard: same top spacing as other pages. */
+.app-shell .landing {
+  padding-block: 24px 48px;
+}
+
+@media (min-width: 768px) {
+  .app-shell .landing {
+    padding-block: 32px 56px;
   }
 }

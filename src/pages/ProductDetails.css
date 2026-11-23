@@ -24,7 +24,7 @@
   width: 100%;
   max-height: 520px; /* keeps the photo from filling the screen on tablets */
   overflow: hidden;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   background: var(--color-surface-muted);
 }
 
@@ -49,9 +49,10 @@
 
 .details__panel {
   padding: 24px 16px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
   background: var(--color-surface);
+  box-shadow: var(--shadow-card);
 }
 
 @media (min-width: 640px) {
