@@ -2,7 +2,7 @@
   width: min(100% - 32px, 500px);
   padding: 0;
   border: 0;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   background: var(--color-surface);
   color: var(--color-text);
   box-shadow: var(--shadow-lg);

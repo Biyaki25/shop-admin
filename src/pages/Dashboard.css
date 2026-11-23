@@ -1,0 +1,428 @@
+/* ---- Shared card surface (dashboard tiles and panels) ---- */
+.card {
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.dashboard__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-self: center;
+}
+
+@media (max-width: 479px) {
+  .dashboard__actions,
+  .dashboard__actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+.dashboard__section {
+  margin-top: 32px;
+}
+
+/* Two cards side by side from 900px; the second row gives the table more room. */
+.dashboard__grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (min-width: 900px) {
+  .dashboard__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard__grid--wide-left {
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  }
+}
+
+/* ---- KPI tiles: icon chip + label + value ---- */
+.kpi-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+@media (min-width: 1100px) {
+  .kpi-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+
+.kpi-tile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.kpi-tile__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+}
+
+.kpi-tile__icon--primary { background: var(--color-primary-50); color: var(--color-primary-text); }
+.kpi-tile__icon--info { background: var(--color-info-bg); color: var(--color-info); }
+.kpi-tile__icon--success { background: var(--color-success-bg); color: var(--color-success); }
+.kpi-tile__icon--warning { background: var(--color-warning-bg); color: var(--color-warning); }
+
+.kpi-tile__label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.kpi-tile__value {
+  margin: 2px 0 0;
+  font-size: 1.625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-tile__note {
+  margin: 2px 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Phones: icon above the numbers so two tiles fit side by side. */
+@media (max-width: 599px) {
+  .kpi-tile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .kpi-tile__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .kpi-tile__value {
+    font-size: 1.375rem;
+  }
+}
+
+/* ---- Card panels ---- */
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 24px;
+}
+
+.dashboard-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dashboard-card__title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.dashboard-card__hint {
+  margin-top: 4px;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.dashboard-card__link {
+  flex: none;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.dashboard-card__empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: var(--color-text-muted);
+}
+
+.dashboard-card__skeleton {
+  height: 96px;
+  margin-top: 24px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+  animation: dashboard-pulse 1.4s ease-in-out infinite;
+}
+
+.dashboard-card__skeleton--tall {
+  height: 220px;
+}
+
+@keyframes dashboard-pulse {
+  50% { opacity: 0.55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-card__skeleton { animation: none; }
+}
+
+/* ---- Stock status: thin segmented bar (8px, rounded, 2px surface gaps) ---- */
+.segment-bar {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  margin-top: 24px;
+}
+
+.segment-bar__part {
+  min-width: 4px;
+  border-radius: var(--radius-pill);
+}
+
+.segment-bar__part--in,
+.status-legend__swatch--in { background: var(--color-success-fill); }
+.segment-bar__part--low,
+.status-legend__swatch--low { background: var(--color-warning-fill); }
+.segment-bar__part--out,
+.status-legend__swatch--out { background: var(--color-danger-fill); }
+
+.status-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.status-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+}
+
+.status-legend__swatch {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+}
+
+.status-legend__name {
+  flex: 1;
+  color: var(--color-text-secondary);
+}
+
+.status-legend__value {
+  font-weight: 600;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.status-legend__share {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ---- Products by category: one hue, value at the bar tip ---- */
+.category-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-bars__row {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  font-size: 0.875rem;
+}
+
+.category-bars__name {
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-bars__track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-bars__bar {
+  height: 12px;
+  min-width: 4px;
+  /* Square at the baseline, 4px rounded data end. */
+  border-radius: 0 4px 4px 0;
+  background: var(--color-primary);
+}
+
+.category-bars__value {
+  font-weight: 600;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Recently updated table ---- */
+.recent-table__scroll {
+  margin: 16px -24px -8px;
+  overflow-x: auto;
+}
+
+.recent-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.recent-table th {
+  padding: 8px 24px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.recent-table td {
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.recent-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.recent-table tbody tr:hover {
+  background: var(--color-surface-muted);
+}
+
+.recent-table__product {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.recent-table__product:hover .recent-table__name {
+  color: var(--color-primary-text);
+}
+
+.recent-table__thumb {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--color-surface-muted);
+}
+
+.recent-table__thumb .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recent-table__name {
+  display: block;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.recent-table__category {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.recent-table__num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Phones: drop the date and price columns, let names wrap, keep stock visible. */
+@media (max-width: 599px) {
+  .recent-table__date,
+  .recent-table__price {
+    display: none;
+  }
+
+  .recent-table td,
+  .recent-table th {
+    padding-inline: 16px;
+  }
+
+  .recent-table td:first-child {
+    white-space: normal;
+  }
+
+  .recent-table__scroll {
+    margin-inline: -24px;
+  }
+}
+
+/* ---- Needs restocking ---- */
+.restock-list {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.restock-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.restock-list__item:last-child {
+  border-bottom: 0;
+}
+
+.restock-list__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.restock-list__name {
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.restock-list__name:hover {
+  color: var(--color-primary-text);
+  text-decoration: underline;
+}

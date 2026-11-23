@@ -3,27 +3,55 @@
  * The mock-up's component sheet shows four states per button:
  * default, hover (darker), keyboard focus (ring) and disabled (grey).
  * Usage: <button class="btn btn--primary">, works on <a> links too.
+ *
+ * The set is modelled on the StarAdmin button sheet and combines freely:
+ *   Colour:  --primary --secondary --success --danger --warning --info
+ *            --light --dark --link
+ *   Style:   (solid by default) --outline  --inverse (soft tinted)
+ *   Shape:   --rounded (pill)  --icon (square, icon only; needs aria-label)
+ *   Size:    --sm  --md  (default 48px)  --lg
+ *   Width:   --block (full width)
+ * e.g. <button class="btn btn--success btn--outline btn--rounded">
+ *
+ * Each colour sets four variables; the style modifiers remap them, so every
+ * colour works with every style without writing 9 × 3 rules by hand.
  */
 
 .btn {
+  /* Solid look */
+  --btn-bg: var(--color-surface);
+  --btn-bg-hover: var(--color-surface-muted);
+  --btn-fg: var(--color-text);
+  --btn-border: transparent;
+  /* Accent pair used by the outline / inverse styles */
+  --btn-accent: var(--color-text);   /* text + border colour (text-safe) */
+  --btn-soft: var(--color-surface-muted); /* tinted background */
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   min-height: 48px;
   padding: 0 24px;
-  border: 1px solid transparent;
+  border: 1px solid var(--btn-border);
   border-radius: var(--radius);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
   font-size: var(--text-base);
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
   transition:
     background-color 0.15s ease,
     border-color 0.15s ease,
     color 0.15s ease,
     box-shadow 0.15s ease;
+}
+
+.btn:hover:not(:disabled, [aria-disabled='true']) {
+  background: var(--btn-bg-hover);
 }
 
 .btn:focus-visible {
@@ -39,17 +67,18 @@
   color: var(--color-text-muted);
 }
 
+/* ---- Colours ------------------------------------------------------------ */
+
 /* Solid indigo: main call to action */
 .btn--primary {
-  background: var(--color-primary-fill);
-  color: var(--color-on-primary);
+  --btn-bg: var(--color-primary-fill);
+  --btn-bg-hover: var(--color-primary-fill-hover);
+  --btn-fg: var(--color-on-primary);
+  --btn-accent: var(--color-primary-text);
+  --btn-soft: var(--color-primary-50);
 }
 
-.btn--primary:hover:not(:disabled) {
-  background: var(--color-primary-fill-hover);
-}
-
-.btn--primary:active:not(:disabled) {
+.btn--primary:not(.btn--outline, .btn--inverse):active:not(:disabled) {
   background: var(--color-primary-active);
 }
 
@@ -63,34 +92,134 @@
 
 /* White with a grey border: "Cancel", "Add another product" */
 .btn--secondary {
-  background: var(--color-surface);
-  border-color: var(--color-border);
-  color: var(--color-text);
+  --btn-bg: var(--color-surface);
+  --btn-bg-hover: var(--color-surface-muted);
+  --btn-fg: var(--color-text);
+  --btn-border: var(--color-border);
+  --btn-accent: var(--color-text-muted);
+  --btn-soft: var(--color-surface-muted);
 }
 
-.btn--secondary:hover:not(:disabled) {
-  background: var(--color-surface-muted);
+.btn--success {
+  --btn-bg: var(--color-success-fill);
+  --btn-bg-hover: var(--color-success-fill-hover);
+  --btn-fg: var(--color-on-primary);
+  --btn-accent: var(--color-success);
+  --btn-soft: var(--color-success-bg);
 }
 
 /* Solid red: "Delete product" on the details page */
 .btn--danger {
-  background: var(--color-danger-fill);
-  color: var(--color-on-primary);
+  --btn-bg: var(--color-danger-fill);
+  --btn-bg-hover: var(--color-danger-hover);
+  --btn-fg: var(--color-on-primary);
+  --btn-accent: var(--color-danger-strong);
+  --btn-soft: var(--color-danger-bg);
 }
 
-.btn--danger:hover:not(:disabled) {
-  background: var(--color-danger-hover);
+/* Amber and sky fills are too light for white text, so they use dark text. */
+.btn--warning {
+  --btn-bg: var(--color-warning-fill);
+  --btn-bg-hover: var(--color-warning-fill-hover);
+  --btn-fg: var(--color-on-light-fill);
+  --btn-accent: var(--color-warning);
+  --btn-soft: var(--color-warning-bg);
 }
 
-/* Red outline: the confirm button inside the delete dialog */
+.btn--info {
+  --btn-bg: var(--color-info-fill);
+  --btn-bg-hover: var(--color-info-fill-hover);
+  --btn-fg: var(--color-on-light-fill);
+  --btn-accent: var(--color-info);
+  --btn-soft: var(--color-info-bg);
+}
+
+.btn--light {
+  --btn-bg: var(--color-light-fill);
+  --btn-bg-hover: var(--color-light-fill-hover);
+  --btn-fg: var(--color-text);
+  --btn-accent: var(--color-text-muted);
+  --btn-soft: var(--color-surface-muted);
+}
+
+.btn--dark {
+  --btn-bg: var(--color-dark-fill);
+  --btn-bg-hover: var(--color-dark-fill-hover);
+  --btn-fg: #ffffff;
+  --btn-accent: var(--color-text);
+  --btn-soft: var(--color-border);
+}
+
+/* Looks like a link but keeps the button's size and focus ring. */
+.btn--link {
+  --btn-bg: transparent;
+  --btn-bg-hover: transparent;
+  --btn-fg: var(--color-primary-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn--link:hover:not(:disabled) {
+  color: var(--color-link-hover);
+}
+
+/* Red outline: the confirm button inside the delete dialog (kept for
+   existing markup; same as .btn--danger.btn--outline). */
 .btn--danger-outline {
-  background: var(--color-surface);
-  border-color: var(--color-danger-strong);
-  color: var(--color-danger-strong);
+  --btn-bg: var(--color-surface);
+  --btn-bg-hover: var(--color-danger-bg);
+  --btn-fg: var(--color-danger-strong);
+  --btn-border: var(--color-danger-strong);
 }
 
-.btn--danger-outline:hover:not(:disabled) {
-  background: var(--color-danger-bg);
+/* ---- Styles ------------------------------------------------------------- */
+
+/* Outlined: transparent, coloured border and text; tints on hover. */
+.btn--outline {
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--btn-soft);
+  --btn-fg: var(--btn-accent);
+  --btn-border: var(--btn-accent);
+}
+
+/* Inverse: soft tinted background with coloured text; border on hover. */
+.btn--inverse {
+  --btn-bg: var(--btn-soft);
+  --btn-bg-hover: var(--btn-soft);
+  --btn-fg: var(--btn-accent);
+  --btn-border: transparent;
+}
+
+.btn--inverse:hover:not(:disabled) {
+  border-color: var(--btn-accent);
+}
+
+/* ---- Shape -------------------------------------------------------------- */
+
+.btn--rounded {
+  border-radius: var(--radius-pill);
+}
+
+/* Square, icon only. Always give it an aria-label. */
+.btn--icon {
+  width: 48px;
+  padding: 0;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+
+/* Large: hero calls to action */
+.btn--lg {
+  min-height: 56px;
+  padding: 0 32px;
+  font-size: var(--text-lg);
+}
+
+/* Medium: toolbars and cards */
+.btn--md {
+  min-height: 40px;
+  padding: 0 20px;
+  font-size: 0.9375rem;
 }
 
 /* Smaller variant: dialog buttons, Undo, Clear search */
@@ -98,6 +227,16 @@
   min-height: 36px;
   padding: 0 16px;
   font-size: 0.875rem;
+}
+
+.btn--icon.btn--lg { width: 56px; padding: 0; }
+.btn--icon.btn--md { width: 40px; padding: 0; }
+.btn--icon.btn--sm { width: 36px; padding: 0; }
+
+/* Full width of its container */
+.btn--block {
+  display: flex;
+  width: 100%;
 }
 
 /* Text-only link styled button: "Back to products", "Clear all" */

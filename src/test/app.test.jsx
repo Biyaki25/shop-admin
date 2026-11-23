@@ -107,6 +107,28 @@ describe('Edit and delete', () => {
   })
 })
 
+describe('Dashboard', () => {
+  it('summarizes the catalog and lists products that need restocking', async () => {
+    renderAt('/')
+    expect(screen.getByRole('heading', { name: 'Dashboard', level: 1 })).toBeInTheDocument()
+
+    const kpis = await screen.findByRole('region', { name: 'Key figures' })
+    expect(await within(kpis).findByText('8')).toBeInTheDocument() // total products
+    expect(within(kpis).getByText('1 low · 1 out')).toBeInTheDocument()
+
+    const restock = screen.getByRole('region', { name: 'Needs restocking' })
+    const links = within(restock).getAllByRole('link', { name: /^Restock / })
+    // Emptiest first: the out-of-stock watch, then the low-stock lamp.
+    expect(links.map((link) => link.getAttribute('aria-label'))).toEqual([
+      'Restock Analog timepiece',
+      'Restock Arc desk lamp',
+    ])
+
+    const recent = screen.getByRole('region', { name: 'Recently updated' })
+    expect(within(recent).getAllByRole('row')).toHaveLength(6) // header + 5 products
+  })
+})
+
 it('shows the 404 page for unknown URLs', () => {
   renderAt('/nope')
   expect(screen.getByRole('heading', { name: 'Page not found' })).toBeInTheDocument()
@@ -148,7 +170,7 @@ describe('Unsaved changes on Edit', () => {
   it('asks "Leave without saving?" before navigating away', async () => {
     const user = renderAt('/products/1/edit')
     await user.type(await screen.findByLabelText(/Stock/), '0')
-    await user.click(screen.getByRole('link', { name: 'Home' }))
+    await user.click(screen.getByRole('link', { name: 'Dashboard' }))
 
     const dialog = screen.getByRole('dialog', { name: 'Leave without saving?' })
     expect(dialog).toHaveTextContent('Your changes will be lost.')
@@ -157,9 +179,9 @@ describe('Unsaved changes on Edit', () => {
     await user.click(within(dialog).getByRole('button', { name: 'Keep editing' }))
     expect(screen.getByLabelText(/Stock/)).toHaveValue(240)
 
-    await user.click(screen.getByRole('link', { name: 'Home' }))
+    await user.click(screen.getByRole('link', { name: 'Dashboard' }))
     await user.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Leave page' }))
-    expect(await screen.findByRole('heading', { name: /Less busywork/ })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: 'Dashboard', level: 1 })).toBeInTheDocument()
   })
 
   it('saves from the sticky bar without asking', async () => {
