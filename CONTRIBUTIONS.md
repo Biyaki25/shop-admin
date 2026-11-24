@@ -12,23 +12,45 @@ Last updated: 2026-11-24
 
 ---
 
-## Git history so far (as of 2026-11-24)
+## Git history (as of 2026-11-24)
 
-All commits so far were made from one GitHub account. Nothing in this table
-has been changed or reassigned.
+Taken from `git log --all` and `gh pr list --state all`. Nothing has been
+changed, backdated or reassigned. All commits were made from the @Biyaki25
+account (email `nyamongo.kamanda23@students.dkut.ac.ke`). Times are the
+commit's own timestamp.
 
-| Commit    | Date (UTC+3)      | Author (GitHub)               | Message                                                                  |
-|-----------|-------------------|-------------------------------|--------------------------------------------------------------------------|
-| `dae626f` | 2026-11-21 15:19  | @Biyaki25 | Initial commit: ShopAdmin admin portal                                   |
-| `bc5d1fc` | 2026-11-21 15:23  | @Biyaki25 | Deploy to GitHub Pages                                                   |
-| `33451af` | 2026-11-23 13:59  | @Biyaki25 | Redesign as admin dashboard with sidebar, dashboard home and button kit  |
+| Commit    | Date             | Author     | Message | Where | Claude co-author |
+|-----------|------------------|------------|---------|-------|------------------|
+| `dae626f` | 2026-11-21 15:19 | @Biyaki25 | Initial commit: ShopAdmin admin portal | `main` | no |
+| `bc5d1fc` | 2026-11-21 15:23 | @Biyaki25 | Deploy to GitHub Pages | `main` | no |
+| `33451af` | 2026-11-23 13:59 | @Biyaki25 | Redesign as admin dashboard with sidebar, dashboard home and button kit | `main` | yes |
+| `54af427` | 2026-11-24 17:30 | @Biyaki25 | docs: add contributing guide, PR template and contributions record | PR #1 → `main` | yes |
+| `ecaa83e` | 2026-11-24 17:32 | @Biyaki25 | docs: give Biyaki25 product-form and responsive areas | PR #1 → `main` | yes |
+| `969bad9` | 2026-11-24 17:43 | @Biyaki25 (shown as "Daniel Kamanda", the account's profile name) | Merge pull request #1 | `main` | – (GitHub merge commit) |
+| `83e7561` | 2026-11-24 17:54 | @Biyaki25 | docs: add "Owner merges" section to CONTRIBUTING.md | PR #10 (open) | yes |
+| `15dd1ab` | 2026-11-24 17:54 | @Biyaki25 | chore: ignore .env files | PR #11 (open) | yes |
+| `54021c6` | 2026-11-24 17:55 | @Biyaki25 | test: stub window.scrollTo to silence jsdom warnings | PR #11 (open) | yes |
+| `1e63db1` | 2026-11-24 17:55 | @Biyaki25 | docs: bring README up to date with the dashboard redesign | PR #11 (open) | yes |
+
+"Claude co-author = yes" means the commit message ends with
+`Co-Authored-By: Claude`, because the change was written with Claude Code
+(see "AI tools used" in the README and Section 12 of the report).
 
 Note: `dae626f` added the whole first version of the app (about 100 files)
 in a single commit. If other members wrote parts of that code before it was
-committed, Git cannot show it. Those parts are listed below under each
-member as **reported by the team**, not as commits.
+committed, Git cannot show it. Such work belongs under each member as
+**reported by the team**, not as commits.
 
-Pull Requests so far: none.
+### Pull Requests
+
+| PR | Title | Author | Branch | Status | Reviews |
+|----|-------|--------|--------|--------|---------|
+| #1 | docs: add team workflow docs and contributions record | @Biyaki25 | `docs/workflow` (deleted after merge) | Merged 2026-11-24 by @Biyaki25 with admin rights | 0 (review requested from @adrielmacharia1, not given) |
+| #10 | docs: add Owner merges section to CONTRIBUTING.md | @Biyaki25 | `docs/contributing-admin-merge` | Open | review requested from @adrielmacharia1 |
+| #11 | chore: final cleanup (README, .gitignore, test warnings) | @Biyaki25 | `chore/final-cleanup` | Open | review requested from @Evans324 |
+
+Update this table when #10 and #11 are reviewed and merged, and add the PR
+that brings in this file.
 
 ## Task assignment (going forward)
 
@@ -58,7 +80,12 @@ agreement; if so, update this table and the GitHub issue assignees.
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
 |------|--------|----|---------|
-| Initial app, GitHub Pages deploy, dashboard redesign (see table above; how `dae626f` was written: [to fill]) | main | none | `dae626f`, `bc5d1fc`, `33451af` |
+| Initial app (how it was written: [to fill by the team]) | `main` | – | `dae626f` |
+| GitHub Pages deployment workflow | `main` | – | `bc5d1fc` |
+| Admin dashboard redesign (sidebar, dashboard home, button kit), with Claude Code | `main` | – | `33451af` |
+| Team workflow docs (CONTRIBUTING.md, PR template, this file), with Claude Code | `docs/workflow` | #1 (merged) | `54af427`, `ecaa83e` |
+| "Owner merges" section in CONTRIBUTING.md, with Claude Code | `docs/contributing-admin-merge` | #10 (open) | `83e7561` |
+| Final cleanup: .gitignore, test warning fix, README update, with Claude Code | `chore/final-cleanup` | #11 (open) | `15dd1ab`, `54021c6`, `1e63db1` |
 
 ### Reported by the team (not visible in Git)
 - [ ] [to fill]
@@ -74,7 +101,7 @@ Confirmed by @Biyaki25: ______________________  Date: ________
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
 |------|--------|----|---------|
-| (no commits in Git yet) | | | |
+| No commits, PRs or reviews in Git/GitHub as of 2026-11-24 | – | – | – |
 
 ### Reported by the team (not visible in Git)
 - [ ] [to fill]
@@ -90,7 +117,7 @@ Confirmed by @adrielmacharia1: ______________________  Date: ________
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
 |------|--------|----|---------|
-| (no commits in Git yet) | | | |
+| No commits, PRs or reviews in Git/GitHub as of 2026-11-24 | – | – | – |
 
 ### Reported by the team (not visible in Git)
 - [ ] [to fill]
@@ -106,7 +133,7 @@ Confirmed by @bensonambani: ______________________  Date: ________
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
 |------|--------|----|---------|
-| (no commits in Git yet) | | | |
+| No commits, PRs or reviews in Git/GitHub as of 2026-11-24 | – | – | – |
 
 ### Reported by the team (not visible in Git)
 - [ ] [to fill]
@@ -122,7 +149,7 @@ Confirmed by @Evans324: ______________________  Date: ________
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
 |------|--------|----|---------|
-| (no commits in Git yet) | | | |
+| No commits, PRs or reviews in Git/GitHub as of 2026-11-24 | – | – | – |
 
 ### Reported by the team (not visible in Git)
 - [ ] [to fill]
@@ -146,9 +173,11 @@ Confirmed by @mfknotis: ______________________  Date: ________
 
 PR reviews are a contribution too. Fill in as PRs are merged.
 
-| PR | Title | Author | Reviewer | Merged |
-|----|-------|--------|----------|--------|
-|    |       |        |          |        |
+| PR | Title | Author | Reviewer | Review given | Merged |
+|----|-------|--------|----------|--------------|--------|
+| #1 | docs: add team workflow docs and contributions record | @Biyaki25 | @adrielmacharia1 (requested) | No | Yes, by @Biyaki25 with admin rights |
+| #10 | docs: add Owner merges section to CONTRIBUTING.md | @Biyaki25 | @adrielmacharia1 (requested) | Not yet | Not yet |
+| #11 | chore: final cleanup (README, .gitignore, test warnings) | @Biyaki25 | @Evans324 (requested) | Not yet | Not yet |
 
 ---
 
