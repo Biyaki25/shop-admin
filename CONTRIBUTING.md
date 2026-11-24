@@ -84,10 +84,15 @@ waiting for approval, for example small docs fixes or when a reviewer is
 unavailable. Feature PRs should still be reviewed by another member. Merges
 done this way are visible on the PR page.
 
-So far, one PR was merged this way: **#1** ("docs: add team workflow docs and
-contributions record"), merged by @Biyaki25 on 2026-11-24 with 0 reviews
-(a review from @adrielmacharia1 had been requested but was not given before
-the merge).
+So far, these PRs were merged this way, all by @Biyaki25 on 2026-11-24 with
+0 reviews (reviews had been requested but were not given before the merge):
+
+| PR | Title | Review requested from |
+|----|-------|-----------------------|
+| #1 | docs: add team workflow docs and contributions record | @adrielmacharia1 |
+| #10 | docs: add Owner merges section to CONTRIBUTING.md | @adrielmacharia1 |
+| #11 | chore: final cleanup (README, .gitignore, test warnings) | @Evans324 |
+| #12 | docs: fill CONTRIBUTIONS.md from real Git/GitHub history | @bensonambani |
 
 Branch protection on `main` requires 1 approval for everyone except admins
 (`enforce_admins` is off).
