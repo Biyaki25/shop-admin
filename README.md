@@ -27,6 +27,9 @@ database to set up. The catalog starts with 8 sample products.
 13. [Customising](#customising)
 14. [Design decisions and assumptions](#design-decisions-and-assumptions)
 15. [Troubleshooting](#troubleshooting)
+16. [Screenshots](#screenshots)
+17. [Team](#team)
+18. [AI tools used](#ai-tools-used)
 
 ---
 
@@ -49,13 +52,19 @@ npm run dev        # start the dev server, then open http://localhost:5173
 | `npm run test:watch` | Re-run tests automatically as you edit                          |
 | `npm run lint`       | Check the code with ESLint                                      |
 
+There is no `npm run api` and no `db.json`: products are stored in the
+browser's `localStorage` (see [Data and browser storage](#data-and-browser-storage)),
+so `npm install` followed by `npm run dev` is all you need after a fresh clone.
+
 ---
 
 ## Features
 
 ### Catalog
-- **Landing page** that explains what ShopAdmin does, with a live "Catalog
-  spotlight" card and three feature cards.
+- **Dashboard** home page: key figures, stock status, products per category,
+  items that need restocking and recently updated products.
+- **Sidebar navigation** (Dashboard, Products, Add Product and the component
+  reference pages) with a top bar holding the page title and theme toggle.
 - **Products page** with four summary cards (Total, In stock, Low stock, Out of
   stock) and a responsive grid of product cards.
 - **Stock badges**: green "In stock · 24", amber "Low stock · 3", red "Out of
@@ -107,7 +116,7 @@ npm run dev        # start the dev server, then open http://localhost:5173
   Undo pauses the countdown.
 
 ### Light and dark mode
-- A sun/moon toggle in the navbar. The choice is remembered; until you pick
+- A sun/moon toggle in the top bar. The choice is remembered; until you pick
   one, the app follows your operating system setting.
 - Every colour comes from design tokens with a Light and a Dark mode, and all
   text meets WCAG AA contrast (4.5:1) in both.
@@ -120,6 +129,8 @@ npm run dev        # start the dev server, then open http://localhost:5173
   page.
 - A **form field states** reference page showing the input in its Default,
   Focus, Filled, Error, Disabled and Read-only variants.
+- A **buttons** reference page showing every button style and size, using the
+  same CSS classes as the live app.
 
 ---
 
@@ -127,12 +138,13 @@ npm run dev        # start the dev server, then open http://localhost:5173
 
 | URL                       | Page                                                      |
 | ------------------------- | --------------------------------------------------------- |
-| `/`                       | Landing page                                              |
+| `/`                       | Dashboard                                                 |
 | `/products`               | Product list with search, filters and sorting             |
 | `/products/new`           | Add product form                                          |
 | `/products/:id`           | Product details (for example `/products/1`)               |
 | `/products/:id/edit`      | Edit product form                                         |
-| `/components/form-fields` | Form field states reference sheet (not in the navigation) |
+| `/components/form-fields` | Form field states reference sheet                         |
+| `/components/buttons`     | Button styles reference sheet                             |
 | anything else             | 404 "Page not found"                                      |
 
 **Products page URL parameters**
@@ -181,16 +193,20 @@ fix them. A valid price is tidied to two decimals when you leave the field
 
 ## Tech stack
 
-| Tool                                                      | Used for                                         |
-| --------------------------------------------------------- | ------------------------------------------------ |
-| [React 19](https://react.dev/)                            | User interface components                        |
-| [React Router 7](https://reactrouter.com/)                | Pages, URLs, and the "leave without saving" guard |
-| [Vite 8](https://vite.dev/)                               | Dev server and production build                  |
-| Plain CSS with custom properties                          | Styling and light/dark design tokens             |
-| [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) + jsdom | Tests                 |
-| [ESLint](https://eslint.org/)                             | Code quality checks                              |
-| [Inter](https://fonts.google.com/specimen/Inter) via Google Fonts | Typeface from the mock-ups               |
-| `localStorage`                                            | Saving products, drafts and the theme choice     |
+Versions are the ones installed from `package-lock.json` (`npm ls --depth=0`).
+
+| Tool                                                      | Version  | Used for                                          |
+| --------------------------------------------------------- | -------- | ------------------------------------------------- |
+| [React](https://react.dev/) + React DOM                   | 19.3.1   | User interface components                         |
+| [React Router](https://reactrouter.com/) (`react-router-dom`) | 7.18.5 | Pages, URLs, and the "leave without saving" guard |
+| [Vite](https://vite.dev/) + `@vitejs/plugin-react`        | 8.3.8 / 6.3.0 | Dev server and production build              |
+| Plain CSS with custom properties                          | –        | Styling and light/dark design tokens              |
+| [Vitest](https://vitest.dev/)                             | 5.1.0    | Test runner                                       |
+| [Testing Library](https://testing-library.com/) (react / user-event / jest-dom) | 16.3.3 / 14.6.12 / 7.0.1 | Rendering and using components in tests |
+| jsdom                                                     | 31.0.1   | Browser environment for tests                     |
+| [ESLint](https://eslint.org/)                             | 10.15.0  | Code quality checks                               |
+| [Inter](https://fonts.google.com/specimen/Inter) via Google Fonts | – | Typeface from the mock-ups               |
+| `localStorage`                                            | –        | Saving products, drafts and the theme choice      |
 
 There are no UI or CSS frameworks: every component and style is in this
 repository. Icons are small inline SVGs in `src/components/ui/Icon.jsx`.
@@ -214,7 +230,7 @@ shop-admin/
 │   ├── routes.jsx               Route table (every URL → page)
 │   │
 │   ├── pages/                   One file per screen
-│   │   ├── Landing.jsx/.css
+│   │   ├── Dashboard.jsx/.css        (home page, `/`)
 │   │   ├── Products.jsx/.css
 │   │   ├── ProductDetails.jsx/.css   (its layout is shared with Edit)
 │   │   ├── AddProduct.jsx
@@ -222,12 +238,14 @@ shop-admin/
 │   │   ├── ProductFormPage.css       (Add page layout and banners)
 │   │   ├── ProductNotFound.jsx
 │   │   ├── NotFound.jsx
-│   │   └── FieldStates.jsx/.css      (form field states sheet)
+│   │   ├── FieldStates.jsx/.css      (form field states sheet)
+│   │   └── ButtonStates.jsx/.css     (button styles sheet)
 │   │
 │   ├── components/
 │   │   ├── layout/              Shared on every page
-│   │   │   ├── Layout.jsx/.css       Header + page + footer, skip link
-│   │   │   ├── Header.jsx/.css       Logo, nav, mobile menu, theme toggle
+│   │   │   ├── Layout.jsx/.css       Sidebar + top bar + page + footer, skip link
+│   │   │   ├── Sidebar.jsx/.css      Logo and navigation; a drawer on small screens
+│   │   │   ├── Topbar.jsx/.css       Menu button, page title, theme toggle
 │   │   │   ├── ThemeToggle.jsx       Sun/moon button
 │   │   │   └── Footer.jsx/.css
 │   │   ├── products/            Product-specific pieces
@@ -292,8 +310,8 @@ code they test (`*.test.js`).
 `src/routes.jsx` lists every page. `main.jsx` passes it to React Router's
 `createBrowserRouter`. A "data router" is used (rather than `<BrowserRouter>`)
 because the Edit page needs `useBlocker()` to show the "Leave without saving?"
-dialog. All pages render inside `Layout`, which supplies the header, footer and
-"Skip to content" link.
+dialog. All pages render inside `Layout`, which supplies the sidebar, top bar,
+footer and "Skip to content" link.
 
 ### Data layer
 `src/data/productStore.js` is the only code that touches product storage. It
@@ -392,7 +410,7 @@ Switching mode only changes the `data-theme` attribute on `<html>`.
 | Token                    | Light     | Dark      | Used for                                  |
 | ------------------------ | --------- | --------- | ----------------------------------------- |
 | `--color-bg`             | `#F9FAFB` | `#0F172A` | Page background                           |
-| `--color-surface`        | `#FFFFFF` | `#1E293B` | Cards, navbar, dialogs                    |
+| `--color-surface`        | `#FFFFFF` | `#1E293B` | Cards, top bar, dialogs                   |
 | `--color-border`         | `#E5E7EB` | `#334155` | Borders                                   |
 | `--color-text`           | `#111827` | `#F1F5F9` | Main text                                 |
 | `--color-text-secondary` | `#374151` | `#CBD5E1` | Body copy (muted)                         |
@@ -442,9 +460,9 @@ The CSS is written **mobile-first**: base styles target phones, and
 | < 520px     | 1-column product grid, 16px side margins                               |
 | ≥ 520px     | 2-column product grid                                                  |
 | ≥ 640px     | 32px side margins, side-by-side footer                                 |
-| ≥ 768px     | Full navbar (the ☰ menu goes away), 4 summary cards in a row, toolbar on one line, 3 feature cards |
+| ≥ 768px     | 4 summary cards in a row, toolbar on one line                          |
 | ≥ 900px     | 3-column product grid                                                  |
-| ≥ 1024px    | Two-column hero, details, edit and add pages                           |
+| ≥ 1024px    | Sidebar always visible (below this it is a drawer opened with ☰); two-column details, edit and add pages |
 | ≥ 1200px    | 4-column product grid, 80px side margins (the 1440px mock-up layout)   |
 
 The content column is at most 1280px wide.
@@ -587,3 +605,52 @@ they didn't show something, these choices were made:
 | A page shows 404 after deploying             | Configure the host to serve `index.html` for all routes (single-page app fallback) |
 | The font looks different                     | Inter loads from Google Fonts; offline, the system font is used      |
 | An old draft appears on the Add page         | Click "Discard draft" under "Product information"                    |
+
+---
+
+## Screenshots
+
+<!-- Add current screenshots here. The images in docs/screenshots/ were taken
+     before the dashboard redesign (commit 33451af), so they show the old
+     Landing page and top navbar. -->
+
+| Page | Screenshot |
+| ---- | ---------- |
+| Dashboard (1440px) | _to add_ |
+| Products with filters (1440px) | _to add_ |
+| Product details (1440px) | _to add_ |
+| Add product (1440px) | _to add_ |
+| Products (375px) | _to add_ |
+
+---
+
+## Team
+
+Area owners come from the task assignment in
+[`CONTRIBUTIONS.md`](CONTRIBUTIONS.md), which is also the record of who did
+what, with commit hashes, PRs and reviews.
+
+| GitHub | Area owned |
+| ------ | ---------- |
+| [@Biyaki25](https://github.com/Biyaki25) (repo owner) | `feature/tests`, `feature/product-form`, `feature/responsive` |
+| [@adrielmacharia1](https://github.com/adrielmacharia1) | `feature/landing` |
+| [@bensonambani](https://github.com/bensonambani) | `docs/report` |
+| [@Evans324](https://github.com/Evans324) | `feature/product-list` |
+| [@mfknotis](https://github.com/mfknotis) | `feature/product-detail` |
+
+---
+
+## AI tools used
+
+This matches Section 12 of the project report
+([`docs/ShopAdmin-Report.pdf`](docs/ShopAdmin-Report.pdf)), which lists the
+items each member still has to confirm.
+
+| Tool | Used for | What the team did |
+| ---- | -------- | ----------------- |
+| Figma AI | Polishing the mock-ups: spacing, alignment, example content, state variants | Reviewed every frame and fixed inconsistencies by hand |
+| Claude (chat) | Planning components and routes, explaining concepts, reviewing approaches | Made the choices and checked explanations against the React and React Router docs |
+| Claude Code | Scaffolding files, generating components, CSS and tests from the mock-ups, debugging, writing the README and report, and the Git workflow docs (`CONTRIBUTING.md`, `CONTRIBUTIONS.md`, PR template) | Read and ran the generated code; ran tests, lint and build; tested every screen in the browser |
+
+Commits written with Claude Code carry a `Co-Authored-By: Claude` line, so
+they can be found with `git log --grep="Co-Authored-By: Claude"`.
