@@ -27,10 +27,11 @@ commit's own timestamp.
 | `54af427` | 2026-11-24 17:30 | @Biyaki25 | docs: add contributing guide, PR template and contributions record | PR #1 → `main` | yes |
 | `ecaa83e` | 2026-11-24 17:32 | @Biyaki25 | docs: give Biyaki25 product-form and responsive areas | PR #1 → `main` | yes |
 | `969bad9` | 2026-11-24 17:43 | @Biyaki25 (shown as "Daniel Kamanda", the account's profile name) | Merge pull request #1 | `main` | – (GitHub merge commit) |
-| `83e7561` | 2026-11-24 17:54 | @Biyaki25 | docs: add "Owner merges" section to CONTRIBUTING.md | PR #10 (open) | yes |
-| `15dd1ab` | 2026-11-24 17:54 | @Biyaki25 | chore: ignore .env files | PR #11 (open) | yes |
-| `54021c6` | 2026-11-24 17:55 | @Biyaki25 | test: stub window.scrollTo to silence jsdom warnings | PR #11 (open) | yes |
-| `1e63db1` | 2026-11-24 17:55 | @Biyaki25 | docs: bring README up to date with the dashboard redesign | PR #11 (open) | yes |
+| `83e7561` | 2026-11-24 17:54 | @Biyaki25 | docs: add "Owner merges" section to CONTRIBUTING.md | PR #10 → `main` (merge `7b45691`) | yes |
+| `15dd1ab` | 2026-11-24 17:54 | @Biyaki25 | chore: ignore .env files | PR #11 → `main` (merge `cd413a8`) | yes |
+| `54021c6` | 2026-11-24 17:55 | @Biyaki25 | test: stub window.scrollTo to silence jsdom warnings | PR #11 → `main` | yes |
+| `1e63db1` | 2026-11-24 17:55 | @Biyaki25 | docs: bring README up to date with the dashboard redesign | PR #11 → `main` | yes |
+| `b74918e` | 2026-11-24 | @Biyaki25 | docs: fill CONTRIBUTIONS.md from the real Git and GitHub history | PR #12 | yes |
 
 "Claude co-author = yes" means the commit message ends with
 `Co-Authored-By: Claude`, because the change was written with Claude Code
@@ -46,11 +47,13 @@ committed, Git cannot show it. Such work belongs under each member as
 | PR | Title | Author | Branch | Status | Reviews |
 |----|-------|--------|--------|--------|---------|
 | #1 | docs: add team workflow docs and contributions record | @Biyaki25 | `docs/workflow` (deleted after merge) | Merged 2026-11-24 by @Biyaki25 with admin rights | 0 (review requested from @adrielmacharia1, not given) |
-| #10 | docs: add Owner merges section to CONTRIBUTING.md | @Biyaki25 | `docs/contributing-admin-merge` | Open | review requested from @adrielmacharia1 |
-| #11 | chore: final cleanup (README, .gitignore, test warnings) | @Biyaki25 | `chore/final-cleanup` | Open | review requested from @Evans324 |
+| #10 | docs: add Owner merges section to CONTRIBUTING.md | @Biyaki25 | `docs/contributing-admin-merge` | Merged 2026-11-24 by @Biyaki25 with admin rights | 0 (review requested from @adrielmacharia1, not given) |
+| #11 | chore: final cleanup (README, .gitignore, test warnings) | @Biyaki25 | `chore/final-cleanup` | Merged 2026-11-24 by @Biyaki25 with admin rights | 0 (review requested from @Evans324, not given) |
+| #12 | docs: fill CONTRIBUTIONS.md from real Git/GitHub history | @Biyaki25 | `docs/contributions-record` | Merged 2026-11-24 by @Biyaki25 with admin rights | 0 (review requested from @bensonambani, not given) |
 
-Update this table when #10 and #11 are reviewed and merged, and add the PR
-that brings in this file.
+All four PRs so far were merged by the repo owner with admin rights and no
+review (see "Owner merges" in CONTRIBUTING.md). The owner chose this to finish
+before the submission deadline instead of waiting for approvals.
 
 ## Task assignment (going forward)
 
@@ -84,8 +87,9 @@ agreement; if so, update this table and the GitHub issue assignees.
 | GitHub Pages deployment workflow | `main` | – | `bc5d1fc` |
 | Admin dashboard redesign (sidebar, dashboard home, button kit), with Claude Code | `main` | – | `33451af` |
 | Team workflow docs (CONTRIBUTING.md, PR template, this file), with Claude Code | `docs/workflow` | #1 (merged) | `54af427`, `ecaa83e` |
-| "Owner merges" section in CONTRIBUTING.md, with Claude Code | `docs/contributing-admin-merge` | #10 (open) | `83e7561` |
-| Final cleanup: .gitignore, test warning fix, README update, with Claude Code | `chore/final-cleanup` | #11 (open) | `15dd1ab`, `54021c6`, `1e63db1` |
+| "Owner merges" section in CONTRIBUTING.md, with Claude Code | `docs/contributing-admin-merge` | #10 (merged) | `83e7561` |
+| Final cleanup: .gitignore, test warning fix, README update, with Claude Code | `chore/final-cleanup` | #11 (merged) | `15dd1ab`, `54021c6`, `1e63db1` |
+| This contributions record, with Claude Code | `docs/contributions-record` | #12 (merged) | `b74918e` + this update |
 
 ### Reported by the team (not visible in Git)
 - [ ] [to fill]
@@ -176,8 +180,9 @@ PR reviews are a contribution too. Fill in as PRs are merged.
 | PR | Title | Author | Reviewer | Review given | Merged |
 |----|-------|--------|----------|--------------|--------|
 | #1 | docs: add team workflow docs and contributions record | @Biyaki25 | @adrielmacharia1 (requested) | No | Yes, by @Biyaki25 with admin rights |
-| #10 | docs: add Owner merges section to CONTRIBUTING.md | @Biyaki25 | @adrielmacharia1 (requested) | Not yet | Not yet |
-| #11 | chore: final cleanup (README, .gitignore, test warnings) | @Biyaki25 | @Evans324 (requested) | Not yet | Not yet |
+| #10 | docs: add Owner merges section to CONTRIBUTING.md | @Biyaki25 | @adrielmacharia1 (requested) | No | Yes, by @Biyaki25 with admin rights |
+| #11 | chore: final cleanup (README, .gitignore, test warnings) | @Biyaki25 | @Evans324 (requested) | No | Yes, by @Biyaki25 with admin rights |
+| #12 | docs: fill CONTRIBUTIONS.md from real Git/GitHub history | @Biyaki25 | @bensonambani (requested) | No | Yes, by @Biyaki25 with admin rights |
 
 ---
 
