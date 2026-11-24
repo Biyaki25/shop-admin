@@ -33,7 +33,9 @@ Pull Requests so far: none.
 ## Task assignment (going forward)
 
 On 2026-11-24 the 7 work areas were assigned to the 5 members by **random
-draw** (`shuf`). Two members got two areas. This says who **owns** each area
+draw** (`shuf`). @Biyaki25 then chose to take on more work, taking
+`feature/product-form` and `feature/responsive` from the two members who had
+drawn two areas. This says who **owns** each area
 from now on. It is not a record of past work. The team can swap areas by
 agreement; if so, update this table and the GitHub issue assignees.
 
@@ -42,16 +44,16 @@ agreement; if so, update this table and the GitHub issue assignees.
 | `feature/landing` | @adrielmacharia1 |
 | `feature/product-list` | @Evans324 |
 | `feature/product-detail` | @mfknotis |
-| `feature/product-form` | @mfknotis |
+| `feature/product-form` | @Biyaki25 |
 | `feature/tests` | @Biyaki25 |
-| `feature/responsive` | @Evans324 |
+| `feature/responsive` | @Biyaki25 |
 | `docs/report` | @bensonambani |
 
 ---
 
 ## [Name] (@Biyaki25)
 
-**Branch(es) assigned from now on:** `feature/tests` (random draw, see below)
+**Branch(es) assigned from now on:** `feature/tests`, `feature/product-form`, `feature/responsive` (see Task assignment)
 
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
@@ -67,7 +69,7 @@ Confirmed by @Biyaki25: ______________________  Date: ________
 
 ## [Name] (@adrielmacharia1)
 
-**Branch(es) assigned from now on:** `feature/landing` (random draw, see below)
+**Branch(es) assigned from now on:** `feature/landing` (see Task assignment)
 
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
@@ -83,7 +85,7 @@ Confirmed by @adrielmacharia1: ______________________  Date: ________
 
 ## [Name] (@bensonambani)
 
-**Branch(es) assigned from now on:** `docs/report` (random draw, see below)
+**Branch(es) assigned from now on:** `docs/report` (see Task assignment)
 
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
@@ -99,7 +101,7 @@ Confirmed by @bensonambani: ______________________  Date: ________
 
 ## [Name] (@Evans324)
 
-**Branch(es) assigned from now on:** `feature/product-list`, `feature/responsive` (random draw, see below)
+**Branch(es) assigned from now on:** `feature/product-list` (see Task assignment)
 
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
@@ -115,7 +117,7 @@ Confirmed by @Evans324: ______________________  Date: ________
 
 ## [Name] (@mfknotis)
 
-**Branch(es) assigned from now on:** `feature/product-detail`, `feature/product-form` (random draw, see below)
+**Branch(es) assigned from now on:** `feature/product-detail` (see Task assignment)
 
 ### Verified in Git/GitHub
 | What | Branch | PR | Commits |
