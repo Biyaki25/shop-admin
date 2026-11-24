@@ -67,7 +67,7 @@ Rules:
 1. Push your branch: `git push -u origin feature/your-branch`
 2. Open a Pull Request into `main` on GitHub. Fill in the template.
 3. Request a review from a **different** team member. You may not approve
-   your own PR.
+   your own PR. (Exception: see "Owner merges" below.)
 4. The reviewer checks out the branch, runs it, and either approves or leaves
    comments. The author fixes and pushes again on the same branch.
 5. After approval, the **author** merges the PR (use "Create a merge commit"
@@ -76,6 +76,21 @@ Rules:
 
 Reviewing is a real contribution and is visible on the PR page, so do it
 properly: run the code, leave specific comments.
+
+### Owner merges
+
+The repository owner (@Biyaki25) has admin rights and may merge a PR without
+waiting for approval, for example small docs fixes or when a reviewer is
+unavailable. Feature PRs should still be reviewed by another member. Merges
+done this way are visible on the PR page.
+
+So far, one PR was merged this way: **#1** ("docs: add team workflow docs and
+contributions record"), merged by @Biyaki25 on 2026-11-24 with 0 reviews
+(a review from @adrielmacharia1 had been requested but was not given before
+the merge).
+
+Branch protection on `main` requires 1 approval for everyone except admins
+(`enforce_admins` is off).
 
 ## 5. Pair programming and `Co-authored-by`
 
