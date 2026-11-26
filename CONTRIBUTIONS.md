@@ -23,15 +23,15 @@ commit's own timestamp.
 |-----------|------------------|------------|---------|-------|------------------|
 | `dae626f` | 2026-11-21 15:19 | @Biyaki25 | Initial commit: ShopAdmin admin portal | `main` | no |
 | `bc5d1fc` | 2026-11-21 15:23 | @Biyaki25 | Deploy to GitHub Pages | `main` | no |
-| `33451af` | 2026-11-23 13:59 | @Biyaki25 | Redesign as admin dashboard with sidebar, dashboard home and button kit | `main` | yes |
-| `54af427` | 2026-11-24 17:30 | @Biyaki25 | docs: add contributing guide, PR template and contributions record | PR #1 → `main` | yes |
-| `ecaa83e` | 2026-11-24 17:32 | @Biyaki25 | docs: give Biyaki25 product-form and responsive areas | PR #1 → `main` | yes |
-| `969bad9` | 2026-11-24 17:43 | @Biyaki25 (shown as "Daniel Kamanda", the account's profile name) | Merge pull request #1 | `main` | – (GitHub merge commit) |
-| `83e7561` | 2026-11-24 17:54 | @Biyaki25 | docs: add "Owner merges" section to CONTRIBUTING.md | PR #10 → `main` (merge `7b45691`) | yes |
-| `15dd1ab` | 2026-11-24 17:54 | @Biyaki25 | chore: ignore .env files | PR #11 → `main` (merge `cd413a8`) | yes |
-| `54021c6` | 2026-11-24 17:55 | @Biyaki25 | test: stub window.scrollTo to silence jsdom warnings | PR #11 → `main` | yes |
-| `1e63db1` | 2026-11-24 17:55 | @Biyaki25 | docs: bring README up to date with the dashboard redesign | PR #11 → `main` | yes |
-| `b74918e` | 2026-11-24 | @Biyaki25 | docs: fill CONTRIBUTIONS.md from the real Git and GitHub history | PR #12 | yes |
+| `f27f83e` | 2026-11-23 13:59 | @Biyaki25 | Redesign as admin dashboard with sidebar, dashboard home and button kit | `main` | yes |
+| `1d231ec` | 2026-11-24 17:30 | @Biyaki25 | docs: add contributing guide, PR template and contributions record | PR #1 → `main` | yes |
+| `e77f24d` | 2026-11-24 17:32 | @Biyaki25 | docs: give Biyaki25 product-form and responsive areas | PR #1 → `main` | yes |
+| `2790a0f` | 2026-11-24 17:43 | @Biyaki25 (shown as "Daniel Kamanda", the account's profile name) | Merge pull request #1 | `main` | – (GitHub merge commit) |
+| `8132b0e` | 2026-11-24 17:54 | @Biyaki25 | docs: add "Owner merges" section to CONTRIBUTING.md | PR #10 → `main` (merge `99de8f2`) | yes |
+| `0f864ce` | 2026-11-24 17:54 | @Biyaki25 | chore: ignore .env files | PR #11 → `main` (merge `cf60f90`) | yes |
+| `acaaf4c` | 2026-11-24 17:55 | @Biyaki25 | test: stub window.scrollTo to silence jsdom warnings | PR #11 → `main` | yes |
+| `4fd8637` | 2026-11-24 17:55 | @Biyaki25 | docs: bring README up to date with the dashboard redesign | PR #11 → `main` | yes |
+| `ce89628` | 2026-11-24 | @Biyaki25 | docs: fill CONTRIBUTIONS.md from the real Git and GitHub history | PR #12 | yes |
 
 "Claude co-author = yes" means the commit message ends with
 `Co-Authored-By: Claude`, because the change was written with Claude Code
@@ -85,11 +85,11 @@ agreement; if so, update this table and the GitHub issue assignees.
 |------|--------|----|---------|
 | Initial app (how it was written: [to fill by the team]) | `main` | – | `dae626f` |
 | GitHub Pages deployment workflow | `main` | – | `bc5d1fc` |
-| Admin dashboard redesign (sidebar, dashboard home, button kit), with Claude Code | `main` | – | `33451af` |
-| Team workflow docs (CONTRIBUTING.md, PR template, this file), with Claude Code | `docs/workflow` | #1 (merged) | `54af427`, `ecaa83e` |
-| "Owner merges" section in CONTRIBUTING.md, with Claude Code | `docs/contributing-admin-merge` | #10 (merged) | `83e7561` |
-| Final cleanup: .gitignore, test warning fix, README update, with Claude Code | `chore/final-cleanup` | #11 (merged) | `15dd1ab`, `54021c6`, `1e63db1` |
-| This contributions record, with Claude Code | `docs/contributions-record` | #12 (merged) | `b74918e` + this update |
+| Admin dashboard redesign (sidebar, dashboard home, button kit), with Claude Code | `main` | – | `f27f83e` |
+| Team workflow docs (CONTRIBUTING.md, PR template, this file), with Claude Code | `docs/workflow` | #1 (merged) | `1d231ec`, `e77f24d` |
+| "Owner merges" section in CONTRIBUTING.md, with Claude Code | `docs/contributing-admin-merge` | #10 (merged) | `8132b0e` |
+| Final cleanup: .gitignore, test warning fix, README update, with Claude Code | `chore/final-cleanup` | #11 (merged) | `0f864ce`, `acaaf4c`, `4fd8637` |
+| This contributions record, with Claude Code | `docs/contributions-record` | #12 (merged) | `ce89628` + this update |
 
 ### Reported by the team (not visible in Git)
 - [ ] [to fill]
